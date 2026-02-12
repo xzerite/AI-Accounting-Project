@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 90%; margin: auto; }
+        .kpi { display: flex; justify-content: space-around; margin-top: 20px; }
+        .kpi div { padding: 20px; border: 1px solid #ccc; border-radius: 5px; text-align: center; }
+        canvas { max-width: 600px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 10px; text-align: center; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Dashboard</h1>
+        <div class="kpi">
+            <div>
+                <h2>KPI Title 1</h2>
+                <p id="kpi1">$0</p>
+            </div>
+            <div>
+                <h2>KPI Title 2</h2>
+                <p id="kpi2">0</p>
+            </div>
+            <div>
+                <h2>KPI Title 3</h2>
+                <p id="kpi3">0</p>
+            </div>
+        </div>
+        <canvas id="myChart"></canvas>
+        <h2>Transaction Table</h2>
+        <table id="transactionTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Transaction rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Sample data
+        const kpiData = { kpi1: 1500, kpi2: 23, kpi3: 8 };  
+        const transactionData = [
+            { date: '2026-02-01', description: 'Transaction 1', amount: 500 },
+            { date: '2026-02-05', description: 'Transaction 2', amount: 300 },
+            { date: '2026-02-10', description: 'Transaction 3', amount: 700 }
+        ];
+        
+        document.getElementById('kpi1').innerText = '$' + kpiData.kpi1;
+        document.getElementById('kpi2').innerText = kpiData.kpi2;
+        document.getElementById('kpi3').innerText = kpiData.kpi3;
+        
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [120, 190, 300, 500, 200],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        const transactionTableBody = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
+        transactionData.forEach(transaction => {
+            const row = transactionTableBody.insertRow();
+            row.insertCell(0).innerText = transaction.date;
+            row.insertCell(1).innerText = transaction.description;
+            row.insertCell(2).innerText = '$' + transaction.amount;
+        });
+    </script>
+</body>
+</html>
