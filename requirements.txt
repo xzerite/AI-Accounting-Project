@@ -1,0 +1,6 @@
+Flask
+Pandas
+NumPy
+scikit-learn
+Werkzeug
+Jinja2
