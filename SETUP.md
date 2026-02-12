@@ -1,51 +1,45 @@
-# Setup Instructions for AI Accounting Fraud Dashboard
+# Setup Instructions for AI-Accounting-Project
 
 ## Prerequisites
-Before you begin, ensure you have met the following requirements:
-
-- **Node.js**: Install Node.js from [Node.js official website](https://nodejs.org/).
-- **npm**: Node Package Manager should come installed with Node.js.
-- **Git**: Make sure Git is installed on your machine. You can download it from [Git official website](https://git-scm.com/).
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) version X.X.X or higher
+- [Git](https://git-scm.com/)
+- A code editor (e.g., Visual Studio Code, Atom)
 
 ## Installation Steps
-1. **Clone the Repository**  
-   Open your terminal and run the following command to clone the repository:
-   
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/xzerite/AI-Accounting-Project.git
+   ```
+2. **Navigate to the Project Directory**
+   ```bash
    cd AI-Accounting-Project
    ```
-
-2. **Install Dependencies**  
-   Navigate to the project directory and install the required packages by running:
-   
+3. **Install Dependencies**
    ```bash
    npm install
    ```
 
-3. **Configuration**  
-   - Create a `.env` file in the root of the project directory.  
-   - Copy the contents from `.env.example` provided in the repository and customize them according to your environment settings.
-   
-   ```bash
-   cp .env.example .env
-   ```
+## Configuration
+1. **Environment Variables**
+   - Create a `.env` file in the root directory and add the following:
+     ```
+     DATABASE_URL=your_database_url
+     API_KEY=your_api_key
+     ```
+2. **Edit configuration settings as required** in the `config.js` file.
 
-4. **Start the Server**  
-   You can now start the development server by running:
-   
+## Running the Application
+1. **Start the Development Server**
    ```bash
    npm start
    ```
+2. Open your browser and navigate to `http://localhost:3000`.
 
-5. **Access the Dashboard**  
-   Open your web browser and go to `http://localhost:3000` to access the AI Accounting Fraud Dashboard.
-
-## Troubleshooting
-- If you encounter any issues, please check the following:
-  - Ensure all dependencies are installed properly.
-  - Double-check your configuration values in the `.env` file.
-  - Consult the project's issue tracker for known bugs and fixes.
-
-## Contribution
-Feel free to contribute to the project by opening issues or submitting pull requests. 
+## Troubleshooting Guide
+- **Issue: Application fails to start**
+  - Check if all dependencies are installed and environment variables are correctly set.
+- **Issue: Database connection error**
+  - Ensure your database service is running and the connection string in the `.env` file is correct.
+- **Issue: API key errors**
+  - Verify that the API key used is valid and has the necessary permissions.
